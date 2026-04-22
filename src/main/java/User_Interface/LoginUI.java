@@ -44,7 +44,7 @@ public class LoginUI {
             String user = username.getText();
 
             if(user.equals("Manager")) {
-                new ManagerDashboard();
+                new ManagerDashboard(null);
             }
             else {
                 EmployeeDAO DAO = new EmployeeDAO();

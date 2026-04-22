@@ -10,7 +10,7 @@ public class FormReader {
     public static String[] getLatestResponse(){
 
         try {
-            String csvUrl = "https://docs.google.com/spreadsheets/d/1ZMIHPJb1-pTTez2X3xwKrUO82RJci7Nh2VMYdIndZnA/edit?format=csv";
+            String csvUrl = "https://docs.google.com/spreadsheets/d/1ZMIHPJb1-pTTez2X3xwKrUO82RJci7Nh2VMYdIndZnA/export?format=csv";
 
             URL url = new URL(csvUrl);
 
@@ -26,7 +26,7 @@ public class FormReader {
 
             bufferedReader.close();
 
-            return lastLine.split(",");
+            return lastLine.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
         } catch (Exception e) {
             e.printStackTrace();
         }
