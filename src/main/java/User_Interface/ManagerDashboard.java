@@ -2,10 +2,8 @@ package User_Interface;
 
 //import
 import javax.swing.*;
-import DAO.EmployeeDAO;
-import DAO.ExitInterviewChecklist;
-import DAO.OffboardingChecklist;
-import DAO.TurnoverReportViewer;
+
+import DAO.*;
 import Model.Employee;
 
 public class ManagerDashboard {
@@ -16,6 +14,7 @@ public class ManagerDashboard {
     JButton employeeSepBtn = new JButton("Manage Employee Separation");
     JButton turnoverReportBtn = new JButton("Generate Turnover Report");
     JButton EmployeeRecordsBtn = new JButton("Update Employee Records");
+    JButton loadResignationsBtn = new JButton("Load Resignations");
 
     private Employee employee;
 
@@ -31,12 +30,14 @@ public class ManagerDashboard {
         employeeSepBtn.setBounds(140, 400, 250, 100);
         turnoverReportBtn.setBounds(300, 200, 200, 100);
         EmployeeRecordsBtn.setBounds(10, 200, 200, 100);
+        loadResignationsBtn.setBounds(300, 200, 200, 100);
 
         frame.add(conductExitBtn);
         frame.add(offboardingBtn);
         frame.add(employeeSepBtn);
         frame.add(turnoverReportBtn);
         frame.add(EmployeeRecordsBtn);
+        frame.add(loadResignationsBtn);
 
         // Add checklist to conduct exit Btn
         conductExitBtn.addActionListener(e -> {
@@ -63,6 +64,14 @@ public class ManagerDashboard {
         turnoverReportBtn.addActionListener(e -> {
             frame.setVisible(false);
             new TurnoverReportViewer();
+        });
+
+        //connect resignation form to databse
+        loadResignationsBtn.addActionListener(e -> {
+            TurnoverEventDao dao = new TurnoverEventDao();
+            dao.insertResignationsFromFrom();
+
+            JOptionPane.showMessageDialog(frame, "Resignations Updated into database");
         });
 
         frame.setVisible(true);
