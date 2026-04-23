@@ -32,6 +32,7 @@ public class ManagerDashboard {
         EmployeeRecordsBtn.setBounds(10, 200, 200, 100);
         loadResignationsBtn.setBounds(300, 200, 200, 100);
 
+
         frame.add(conductExitBtn);
         frame.add(offboardingBtn);
         frame.add(employeeSepBtn);
@@ -72,6 +73,12 @@ public class ManagerDashboard {
             dao.insertResignationsFromFrom();
 
             JOptionPane.showMessageDialog(frame, "Resignations Updated into database");
+        });
+
+        //this will connect to the employee separation
+        employeeSepBtn.addActionListener(e -> {
+            frame.setVisible(false);
+            new EmployeeSeperattion(employee);
         });
 
         frame.setVisible(true);
