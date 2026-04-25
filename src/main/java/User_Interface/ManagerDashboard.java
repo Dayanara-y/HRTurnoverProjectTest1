@@ -48,12 +48,14 @@ public class ManagerDashboard {
 
         //Add employeeUpdate to button
         EmployeeRecordsBtn.addActionListener(e -> {
-            EmployeeDAO employeeDAO = new EmployeeDAO();
-            employeeDAO.updateEmployeeFromForm();
-
-            //shows that record was updated
-            JOptionPane.showMessageDialog(frame, "Employee Records Updated");
+//            EmployeeDAO employeeDAO = new EmployeeDAO();
+//            employeeDAO.updateEmployeeFromForm();
+//
+//            //shows that record was updated
+//            JOptionPane.showMessageDialog(frame, "Employee Records Updated");
+            showEmployeeRecordsMenu();
         });
+
 
         // makes it so checklisy appears in the offboarding button
         offboardingBtn.addActionListener(e -> {
@@ -82,6 +84,60 @@ public class ManagerDashboard {
         });
 
         frame.setVisible(true);
+    }
+
+    // this is to add the button to see employee perfomance request and their meeting w/ manager request
+    private void showEmployeeRecordsMenu() {
+        JDialog d = new JDialog(frame, "Employee Records");
+        d.setLayout(null);
+        d.setSize(600, 600);
+
+        //updates the employees from form
+        JButton updateEmployeeRecordsBtn = new JButton("Update Employee Records");
+        updateEmployeeRecordsBtn.setBounds(80, 20, 320, 40);
+        updateEmployeeRecordsBtn.addActionListener(e -> {
+            new EmployeeDAO().updateEmployeeFromForm();
+            JOptionPane.showMessageDialog(frame, "Employee Records Updated into database");
+
+        });
+        d.add(updateEmployeeRecordsBtn);
+
+        // add the view updaterecords request
+        JButton updateEmployeeInfoBtn = new JButton("View Update Records Request");
+        updateEmployeeInfoBtn.setBounds(80, 80, 320, 40);
+        updateEmployeeInfoBtn.addActionListener(e -> {
+            openGoogleSheet("https://docs.google.com/spreadsheets/d/1ZMIHPJb1-pTTez2X3xwKrUO82RJci7Nh2VMYdIndZnA/edit?usp=sharing");
+
+        });
+        d.add(updateEmployeeInfoBtn);
+
+        //add the employee performance request excel
+        JButton viewPerformanceBtn = new JButton("View Employee Performance Request");
+        viewPerformanceBtn.setBounds(80, 140, 320, 40);
+        viewPerformanceBtn.addActionListener(e -> {
+            openGoogleSheet("https://docs.google.com/spreadsheets/d/1SDvlFWh7ha6snAgGnHqy0k2wyLYeSR00nYmRvUKMod4/edit?usp=sharing");
+        });
+        d.add(viewPerformanceBtn);
+
+        // add employee meeting request
+        JButton meetingRequestBtn = new JButton("View Employee Meeting Request with Manager");
+        meetingRequestBtn.setBounds(80, 200, 320, 40);
+        meetingRequestBtn.addActionListener(e -> {
+            openGoogleSheet("https://docs.google.com/spreadsheets/d/1ZtieBCOE0YeNHysheZx5ZVx9j77_zCPw1iwP-6NzbBs/edit?usp=sharing");
+        });
+        d.add(meetingRequestBtn);
+
+        d.setVisible(true);
+
+    }
+
+    // this method reads the googlesheet
+    private void openGoogleSheet(String url) {
+        try{
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        }catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
