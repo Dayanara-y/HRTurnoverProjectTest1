@@ -64,7 +64,7 @@ public class ManagerDashboard {
         //makes connection to data excel sheet
         turnoverReportBtn.addActionListener(e -> {
             frame.setVisible(false);
-            new TurnoverReportViewer();
+            new TurnoverReportViewer(employee);
         });
 
         //connect resignation form to databse

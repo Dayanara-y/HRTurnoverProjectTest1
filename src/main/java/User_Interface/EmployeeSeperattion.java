@@ -15,10 +15,10 @@ public class EmployeeSeperattion {
     JTextField textFieldID = new JTextField();
 
     JLabel labelDepartureType = new JLabel("Departure Type: ");
-    String[] types = {"Quit", "Fired", "New Job Opportunity", "Did not disclose"};
+    String[] types = {"Quit", "Fired"};
     JComboBox<String> comboBoxDepartureType = new JComboBox<>(types);
 
-    JLabel labelReason = new JLabel("Reason: ");
+    JLabel labelReason = new JLabel("Reason (If employee Quit): ");
     JComboBox<String> comboBoxReason = new JComboBox<>();
 
     JLabel labelDate = new JLabel("Departure Date (YYY-MM-DD): ");
@@ -41,14 +41,14 @@ public class EmployeeSeperattion {
         labelDepartureType.setBounds(10, 50, 100, 20);
         comboBoxDepartureType.setBounds(150, 50, 100, 20);
 
-        labelReason.setBounds(10, 70, 100, 20);
-        comboBoxReason.setBounds(150, 70, 100, 20);
+        labelReason.setBounds(10, 70, 200, 20);
+        comboBoxReason.setBounds(200, 70, 100, 20);
 
-        labelDate.setBounds(10, 100, 100, 20);
-        textFieldDate.setBounds(150, 100, 100, 20);
+        labelDate.setBounds(10, 100, 200, 20);
+        textFieldDate.setBounds(200, 100, 100, 20);
 
-        recordButton.setBounds(10, 150, 100, 20);
-        backButton.setBounds(10, 200, 100, 20);
+        recordButton.setBounds(10, 150, 150, 20);
+        backButton.setBounds(10, 200, 150, 20);
 
         frame.add(labelID);
         frame.add(textFieldID);

@@ -1,16 +1,26 @@
 package DAO;
 
 //imports
+import Model.Employee;
+import User_Interface.ManagerDashboard;
+
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class TurnoverReportViewer {
 
+    private Employee employee;
     JFrame frame = new JFrame("Turnover Report");
 
-    public TurnoverReportViewer() {
-        frame.setSize(800, 11000);
+    public TurnoverReportViewer(Employee employee) {
+        this.employee = employee;
+        frame.setSize(900, 900);
         frame.setLayout(null);
+
+        // turnover report is too large so add scrollpane
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setPreferredSize(new java.awt.Dimension(900, 1400));
 
         ArrayList<String[]> data = TurnoverReportReader.getAllResponses();
 
@@ -37,17 +47,18 @@ public class TurnoverReportViewer {
 
         JTable table = new JTable(tableData, columnNames);
         JScrollPane pane = new JScrollPane(table);
-        pane.setBounds(20, 20, 800, 800);
-        frame.add(pane);
+        pane.setBounds(20, 20, 800, 500);
+        panel.add(pane);
 
         // calculate the turnover to read accurately from excel sheet
         int total = 0;
         int quit = 0;
         int fired = 0;
+        int reasonIndex = -1;
 
         //this part fxes the issue og not finding the correct column index
         String[] header = data.get(0);
-        int reasonIndex = -1;
+
 
         for (int i = 0; i < header.length; i++) {
             if(header[i].toLowerCase().contains("reason")){
@@ -83,9 +94,26 @@ public class TurnoverReportViewer {
 
         JTextArea report = new JTextArea(
                 "Total Employees: 50" + "\nEmployees Left: " + left + "\nTurnover Rate: " + String.format("%.2f", turnover) + "%" + "\nQuit percentage:" + quit + "\nFired percentage: " + fired + "%");
-        report.setBounds(20, 450, 800, 800);
+        report.setBounds(20, 540, 800, 120);
         report.setEditable(false);
-        frame.add(report);
+        panel.add(report);
+
+
+        // this adds the back to dashboard button
+        JButton back = new JButton("Back to Dashboard");
+        back.setBounds(20,680,200,30);
+        back.addActionListener(e ->{
+            frame.dispose();
+            new ManagerDashboard(employee);
+        });
+        panel.add(back);
+
+        //scroll sliders
+        JScrollPane pane1 = new JScrollPane(panel);
+        pane1.setBounds(0,0,880,880);
+        frame.add(pane1);
         frame.setVisible(true);
     }
+
+
 }
