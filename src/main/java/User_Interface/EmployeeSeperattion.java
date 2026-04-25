@@ -138,21 +138,21 @@ public class EmployeeSeperattion {
             return 0;
         }
     }
-    private void archiveEmployee() {
-        try{
-            int id = Integer.parseInt(textFieldID.getText());
-            Connection conn = ConnToDB.getConnection();
-
-            String sql = "UPDATE Employee SET Status = 'Archived' WHERE EmployeeID = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(frame, "Archived Employee");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(frame, "Error");
-        }
-    }
+//    private void archiveEmployee() {
+//        try{
+//            int id = Integer.parseInt(textFieldID.getText());
+//            Connection conn = ConnToDB.getConnection();
+//
+//            String sql = "UPDATE Employee SET Status = 'Archived' WHERE EmployeeID = ?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ps.setInt(1, id);
+//            ps.executeUpdate();
+//            JOptionPane.showMessageDialog(frame, "Archived Employee");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            JOptionPane.showMessageDialog(frame, "Error");
+//        }
+//    }
 
 
 }

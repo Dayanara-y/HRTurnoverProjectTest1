@@ -9,10 +9,36 @@ public class TurnoverReportViewer {
     JFrame frame = new JFrame("Turnover Report");
 
     public TurnoverReportViewer() {
-        frame.setSize(800, 600);
+        frame.setSize(800, 11000);
         frame.setLayout(null);
 
         ArrayList<String[]> data = TurnoverReportReader.getAllResponses();
+
+        // makes the arrayList into a 2d array
+        String[] columnNames = data.get(0);
+
+        // had a crash if this is not added since it wasnt able to read index columns correctly
+        int columnCount = columnNames.length;
+
+        String[][] tableData = new String[data.size()-1][columnCount];
+        for(int i=1; i<data.size()-1; i++) {
+            String[] row = data.get(i);
+            String[] fixedRow = new String[columnCount];
+            for(int j=0; j< row.length && j < columnCount; j++) {
+                fixedRow[j] = row[j];
+            }
+
+            //if missing values add empty space
+            for(int j = row.length; j < columnCount; j++) {
+                fixedRow[j] = "";
+            }
+            tableData[i-1] = fixedRow;
+        }
+
+        JTable table = new JTable(tableData, columnNames);
+        JScrollPane pane = new JScrollPane(table);
+        pane.setBounds(20, 20, 800, 800);
+        frame.add(pane);
 
         // calculate the turnover to read accurately from excel sheet
         int total = 0;
@@ -39,7 +65,7 @@ public class TurnoverReportViewer {
 
             if(reason == null) continue;
             reason = reason.trim().toLowerCase();
-            
+
             if(reason.isEmpty()) continue;
             total++;
 
@@ -57,7 +83,8 @@ public class TurnoverReportViewer {
 
         JTextArea report = new JTextArea(
                 "Total Employees: 50" + "\nEmployees Left: " + left + "\nTurnover Rate: " + String.format("%.2f", turnover) + "%" + "\nQuit percentage:" + quit + "\nFired percentage: " + fired + "%");
-        report.setBounds(20, 20, 400, 300);
+        report.setBounds(20, 450, 800, 800);
+        report.setEditable(false);
         frame.add(report);
         frame.setVisible(true);
     }

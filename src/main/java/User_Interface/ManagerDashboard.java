@@ -30,7 +30,7 @@ public class ManagerDashboard {
         employeeSepBtn.setBounds(140, 400, 250, 100);
         turnoverReportBtn.setBounds(300, 200, 200, 100);
         EmployeeRecordsBtn.setBounds(10, 200, 200, 100);
-        loadResignationsBtn.setBounds(300, 200, 200, 100);
+    //    loadResignationsBtn.setBounds(300, 320, 200, 100);
 
 
         frame.add(conductExitBtn);

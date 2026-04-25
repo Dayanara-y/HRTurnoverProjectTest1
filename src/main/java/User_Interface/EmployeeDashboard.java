@@ -92,7 +92,13 @@ public class EmployeeDashboard {
         });
 
         //request to view performance
-
+        viewPerformanceBtn.addActionListener(e->{
+            try{
+                java.awt.Desktop.getDesktop().browse(new java.net.URI("https://docs.google.com/forms/d/e/1FAIpQLSeEJOnHiIgP0iHzxrofkEBOAVhU8H2d5QXXvI-JGjzTqNWMWQ/viewform?usp=sharing&ouid=116154935130672454109"));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
         frame.setVisible(true);
     }
