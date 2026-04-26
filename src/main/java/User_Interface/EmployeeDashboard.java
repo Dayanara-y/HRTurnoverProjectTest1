@@ -38,16 +38,16 @@ public class EmployeeDashboard {
         frame.setLayout(null);
 
         //New label for welcoming employee
-        welcomeLabel = new JLabel("Welcome " + employee.getFirstName() + " " + employee.getLastName());
+        welcomeLabel = new JLabel("Welcome, " + employee.getFirstName() + " " + employee.getLastName());
 
         welcomeLabel.setBounds(50,0,400,30);
         frame.add(welcomeLabel);
 
-        updateEmployeeInfoBtn.setBounds(50, 10, 400, 100);
-        goalsBtn.setBounds(50, 120, 400, 100);
-        meetingRequestBtn.setBounds(50, 240, 400, 100);
-        viewPerformanceBtn.setBounds(50, 360, 400, 100);
-        resignationBtn.setBounds(50, 480, 400, 100);
+        updateEmployeeInfoBtn.setBounds(50, 50, 400, 50);
+        goalsBtn.setBounds(50, 110, 400, 50);
+        meetingRequestBtn.setBounds(50, 170, 400, 50);
+        viewPerformanceBtn.setBounds(50, 230, 400, 50);
+        resignationBtn.setBounds(50, 290, 400, 50);
 
         frame.add(updateEmployeeInfoBtn);
         frame.add(goalsBtn);

@@ -19,7 +19,7 @@ public class OffboardingChecklist {
     // exit interview checklis button
     JButton conductExitBtn = new JButton("Exit Interview Checklist");
     //back to menu button
-    JButton backBtn = new JButton("Back to Manager Dashboard");
+    JButton backBtn = new JButton("Back to Dashboard");
 
     //button to view resignation request
     JButton viewResignationBtn = new JButton("View Resignation Request");
@@ -37,9 +37,9 @@ public class OffboardingChecklist {
         checkbox2.setBounds(20, 60, 400, 30);
         checkbox3.setBounds(20, 100, 400, 30);
 
-        backBtn.setBounds(20, 160, 250, 40);
-        viewResignationBtn.setBounds(20, 225, 250, 40);
-        conductExitBtn.setBounds(20, 290, 250, 40);
+        viewResignationBtn.setBounds(20, 160, 250, 40);
+        conductExitBtn.setBounds(20, 225, 250, 40);
+        backBtn.setBounds(20, 290, 250, 40);
 
 
         frame.add(checkbox1);

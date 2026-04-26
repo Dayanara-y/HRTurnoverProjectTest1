@@ -25,7 +25,7 @@ public class EmployeeSeperattion {
     JTextField textFieldDate = new JTextField();
 
     JButton recordButton = new JButton("Record Separation");
-    JButton backButton = new JButton("Back");
+    JButton backButton = new JButton("Back to dashboard");
 
     private Employee employee;
 
@@ -42,7 +42,7 @@ public class EmployeeSeperattion {
         comboBoxDepartureType.setBounds(150, 50, 100, 20);
 
         labelReason.setBounds(10, 70, 200, 20);
-        comboBoxReason.setBounds(200, 70, 100, 20);
+        comboBoxReason.setBounds(200, 70, 150, 20);
 
         labelDate.setBounds(10, 100, 200, 20);
         textFieldDate.setBounds(200, 100, 100, 20);
