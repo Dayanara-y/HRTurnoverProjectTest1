@@ -6,6 +6,7 @@ import Model.Employee;
 
 import javax.swing.*;
 
+
 public class LoginUI {
     JFrame frame = new JFrame("HR System Login");
 
@@ -42,17 +43,41 @@ public class LoginUI {
 
         login.addActionListener(e -> {
             String user = username.getText();
+            String pass = new String(password.getPassword());
 
-            if(user.equals("Manager")) {
+            //Manager Login
+            if(user.equals("Emily") && pass.equals("5678")){
                 new ManagerDashboard(null);
+                frame.dispose();
             }
-            else {
-                EmployeeDAO DAO = new EmployeeDAO();
-                Employee employee = DAO.getEmployee(1);
+
+            // Employee Login
+            else if (user.equals("Lucky") && pass.equals("1889")) {
+                Employee employee = new Employee();
+                employee.setFirstName("Lucky");
+                employee.setLastName("Test");
+                employee.setEmployeeID(1889);
 
                 new EmployeeDashboard(employee);
+                frame.dispose();
+
             }
-            frame.dispose();
+
+            else{
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password");
+            }
+
+            // this was used to facilitate testing
+//            if(user.equals("Manager")) {
+//                new ManagerDashboard(null);
+//            }
+//            else {
+//                EmployeeDAO DAO = new EmployeeDAO();
+//                Employee employee = DAO.getEmployee(1);
+//
+//                new EmployeeDashboard(employee);
+//            }
+//            frame.dispose();
         });
 
     }
