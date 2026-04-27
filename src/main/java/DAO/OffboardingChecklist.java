@@ -29,7 +29,8 @@ public class OffboardingChecklist {
     public OffboardingChecklist(Employee employee) {
         this.employee = employee;
 
-        frame.setSize(600, 600);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         frame.setLayout(null);
 
         //checkboxes sizes and frames

@@ -14,7 +14,8 @@ public class TurnoverReportViewer {
 
     public TurnoverReportViewer(Employee employee) {
         this.employee = employee;
-        frame.setSize(900, 900);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+       // frame.setSize(900, 900);
         frame.setLayout(null);
 
         // turnover report is too large so add scrollpane

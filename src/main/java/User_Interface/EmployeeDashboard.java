@@ -12,7 +12,6 @@ public class EmployeeDashboard {
 
     //store the logged in employee
     Employee employee;
-
     JLabel welcomeLabel;
 
     JButton updateEmployeeInfoBtn = new JButton("Update Profile");
@@ -25,17 +24,26 @@ public class EmployeeDashboard {
     private DefaultListModel<String> goalList = new DefaultListModel<>();
 
     public EmployeeDashboard(Employee employee) {
+
         this(employee, new DefaultListModel<>());
     }
 
     //constructor
     public EmployeeDashboard(Employee employee, DefaultListModel<String> goalList) {
+
         this.employee = employee;
         this.goalList = goalList;
 
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 900);
+
         frame.setLayout(null);
+
+        //label to hold buttons
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setSize(500, 400);
 
         //New label for welcoming employee
         welcomeLabel = new JLabel("Welcome, " + employee.getFirstName() + " " + employee.getLastName());
@@ -49,11 +57,21 @@ public class EmployeeDashboard {
         viewPerformanceBtn.setBounds(50, 230, 400, 50);
         resignationBtn.setBounds(50, 290, 400, 50);
 
-        frame.add(updateEmployeeInfoBtn);
-        frame.add(goalsBtn);
-        frame.add(meetingRequestBtn);
-        frame.add(viewPerformanceBtn);
-        frame.add(resignationBtn);
+        panel.add(updateEmployeeInfoBtn);
+        panel.add(goalsBtn);
+        panel.add(meetingRequestBtn);
+        panel.add(viewPerformanceBtn);
+        panel.add(resignationBtn);
+
+        frame.add(panel);
+        frame.setVisible(true);
+
+        //center panel
+        //center login stuff
+        SwingUtilities.invokeLater(() -> {
+            panel.setLocation((frame.getWidth() - panel.getWidth()) / 2, (frame.getHeight() - panel.getHeight()) / 2);
+
+        });
 
         //connect a gaol tracker to button
         goalsBtn.addActionListener(e ->{

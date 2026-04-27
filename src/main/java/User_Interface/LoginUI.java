@@ -20,10 +20,17 @@ public class LoginUI {
     JButton login = new JButton("Login");
 
     public LoginUI() {
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
-        frame.setSize(300, 200);
+        //frame.setSize(300, 200);
         frame.setLayout(null);
+
+        //make panel twoards the middle
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setSize(300,200);
 
         usernamelabel.setBounds(20, 20, 100, 25);
         username.setBounds(130, 20, 120, 25);
@@ -33,13 +40,23 @@ public class LoginUI {
 
         login.setBounds(100, 110, 100, 30);
 
-        frame.add(usernamelabel);
-        frame.add(passwordlabel);
-        frame.add(username);
-        frame.add(password);
-        frame.add(login);
+        panel.add(usernamelabel);
+        panel.add(passwordlabel);
+        panel.add(username);
+        panel.add(password);
+        panel.add(login);
+
+        frame.add(panel);
 
         frame.setVisible(true);
+
+        //center login stuff
+        SwingUtilities.invokeLater(() -> {
+            panel.setLocation((frame.getWidth() - panel.getWidth()) / 2, (frame.getHeight() - panel.getHeight()) / 2);
+
+        });
+
+
 
         login.addActionListener(e -> {
             String user = username.getText();

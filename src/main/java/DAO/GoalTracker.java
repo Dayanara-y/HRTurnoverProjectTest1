@@ -24,8 +24,10 @@ public class GoalTracker {
         this.employee = employee;
         this.goalList = goalList;
         this.goalLists.setModel(goalList);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(800, 600);
+
         frame.setLayout(new BorderLayout(10,10));
 
         JLabel goalLabel = new JLabel("State Goals Below:");

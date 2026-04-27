@@ -25,7 +25,8 @@ public class ExitInterviewChecklist {
     public ExitInterviewChecklist(Employee employee) {
         this.employee = employee;
 
-        frame.setSize(800, 600);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         frame.setLayout(null);
 
         check1.setBounds(10, 10, 500, 50);

@@ -21,9 +21,15 @@ public class ManagerDashboard {
 
     public ManagerDashboard(Employee employee) {
         this.employee = employee;
+
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
         frame.setLayout(null);
+
+        //make centered
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setSize(600, 500);
 
         conductExitBtn.setBounds(10, 10, 200, 100);
         offboardingBtn.setBounds(300, 10, 200, 100);
@@ -33,12 +39,22 @@ public class ManagerDashboard {
     //    loadResignationsBtn.setBounds(300, 320, 200, 100);
 
 
-        frame.add(conductExitBtn);
-        frame.add(offboardingBtn);
-        frame.add(employeeSepBtn);
-        frame.add(turnoverReportBtn);
-        frame.add(EmployeeRecordsBtn);
-        frame.add(loadResignationsBtn);
+        panel.add(conductExitBtn);
+        panel.add(offboardingBtn);
+        panel.add(employeeSepBtn);
+        panel.add(turnoverReportBtn);
+        panel.add(EmployeeRecordsBtn);
+        panel.add(loadResignationsBtn);
+
+        //add in panels
+        frame.add(panel);
+        frame.setVisible(true);
+
+        //center login stuff
+        SwingUtilities.invokeLater(() -> {
+            panel.setLocation((frame.getWidth() - panel.getWidth()) / 2, (frame.getHeight() - panel.getHeight()) / 2);
+
+        });
 
         // Add checklist to conduct exit Btn
         conductExitBtn.addActionListener(e -> {
@@ -88,9 +104,14 @@ public class ManagerDashboard {
 
     // this is to add the button to see employee perfomance request and their meeting w/ manager request
     private void showEmployeeRecordsMenu() {
-        JDialog d = new JDialog(frame, "Employee Records");
+        JFrame d = new JFrame( "Employee Records");
+        d.setExtendedState(JFrame.MAXIMIZED_BOTH);
         d.setLayout(null);
-        d.setSize(600, 600);
+
+        //create the panel that holds buttons
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setSize(600, 500);
 
         //updates the employees from form
         JButton updateEmployeeRecordsBtn = new JButton("Update Employee Records");
@@ -100,7 +121,7 @@ public class ManagerDashboard {
             JOptionPane.showMessageDialog(frame, "Employee Records Updated into database");
 
         });
-        d.add(updateEmployeeRecordsBtn);
+        panel.add(updateEmployeeRecordsBtn);
 
         // add the view updaterecords request
         JButton updateEmployeeInfoBtn = new JButton("View Update Records Request");
@@ -109,7 +130,7 @@ public class ManagerDashboard {
             openGoogleSheet("https://docs.google.com/spreadsheets/d/1ZMIHPJb1-pTTez2X3xwKrUO82RJci7Nh2VMYdIndZnA/edit?usp=sharing");
 
         });
-        d.add(updateEmployeeInfoBtn);
+        panel.add(updateEmployeeInfoBtn);
 
         //add the employee performance request excel
         JButton viewPerformanceBtn = new JButton("View Employee Performance Request");
@@ -117,7 +138,7 @@ public class ManagerDashboard {
         viewPerformanceBtn.addActionListener(e -> {
             openGoogleSheet("https://docs.google.com/spreadsheets/d/1SDvlFWh7ha6snAgGnHqy0k2wyLYeSR00nYmRvUKMod4/edit?usp=sharing");
         });
-        d.add(viewPerformanceBtn);
+        panel.add(viewPerformanceBtn);
 
         // add employee meeting request
         JButton meetingRequestBtn = new JButton("View Employee Meeting Request with Manager");
@@ -125,9 +146,18 @@ public class ManagerDashboard {
         meetingRequestBtn.addActionListener(e -> {
             openGoogleSheet("https://docs.google.com/spreadsheets/d/1ZtieBCOE0YeNHysheZx5ZVx9j77_zCPw1iwP-6NzbBs/edit?usp=sharing");
         });
-        d.add(meetingRequestBtn);
+        panel.add(meetingRequestBtn);
 
+        d.add(panel);
         d.setVisible(true);
+
+        //center login stuff
+        SwingUtilities.invokeLater(() -> {
+            panel.setLocation((frame.getWidth() - panel.getWidth()) / 2, (frame.getHeight() - panel.getHeight()) / 2);
+
+        });
+
+
 
     }
 
