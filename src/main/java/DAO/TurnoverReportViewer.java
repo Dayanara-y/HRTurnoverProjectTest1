@@ -27,7 +27,7 @@ public class TurnoverReportViewer {
         // makes the arrayList into a 2d array
         String[] columnNames = data.get(0);
 
-        // had a crash if this is not added since it wasnt able to read index columns correctly
+        // had a crash if this is not added since it wasn't able to read index columns correctly
         int columnCount = columnNames.length;
 
         String[][] tableData = new String[data.size()-1][columnCount];
@@ -56,7 +56,7 @@ public class TurnoverReportViewer {
         int fired = 0;
         int reasonIndex = -1;
 
-        //this part fxes the issue og not finding the correct column index
+        //this part fixes the issue of not finding the correct column index
         String[] header = data.get(0);
 
 
